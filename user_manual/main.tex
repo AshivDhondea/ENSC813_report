@@ -1,0 +1,161 @@
+\documentclass[12pt]{article}
+\usepackage[a4paper]{geometry}
+\geometry{verbose,tmargin=32mm,bmargin=27mm,lmargin=21mm,rmargin=19mm,headheight=10mm,headsep=12mm,footskip=12mm}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{float}
+\usepackage[section]{placeins}
+\usepackage{epigraph}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{amsmath,amsthm,amssymb}
+\DeclareMathOperator*{\argmax}{\arg\!\max}
+\newcommand{\sgn}{\operatorname{sgn}}
+\usepackage[autostyle,english=british]{csquotes}
+\MakeOuterQuote{"}
+\usepackage[nice]{nicefrac}
+\usepackage{url}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor= blue,
+}
+\urlstyle{same}
+\newtheorem*{remark}{Remark}
+
+\usepackage{soul}
+\usepackage{adjustbox}
+
+\title{ENSC 813 \\ Spring 2020 \\ Classifying car images in the TCC dataset \\ User Manual}
+
+\author{Ashiv Hans Dhondea\\SFU ID: 301400489\\SFU Email: \href{mailto:hdhondea@sfu.ca}{hdhondea@sfu.ca} }
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\vskip 5mm
+
+\newpage
+
+\section{Introduction} 
+This user manual provides general information on how to run the scripts in this project. The \textit{GitHub} repository for this project can be found at \url{https://github.com/AshivDhondea/ENSC813_Project}.
+
+\section{Scripts}
+Scripts in this project should be run sequentially, i.e. \verb|main_10_binary_classification_00.py| should be run before \verb|main_11_binary_classification_00.py|.
+
+Exploratory Data Analysis is done in \verb|main_00_eda_00.py|.
+
+\begin{table}[H]
+	\caption{Binary classification scripts} \label{table:scripts}
+	\centering
+	\begin{adjustbox}{max width=\textwidth}
+	\begin{tabular}{| l | l | }
+		\hline
+		\textbf{File name} & \textbf{Purpose} \\
+		\hline \hline
+		\verb|main_02_binary_classification_00.py| & EDA and undersampling. \\ \hline 
+		\verb|main_03_binary_classification_00.py| & Model 1. k-fold CrossVal \\ \hline
+		\verb|main_04_binary_classification_00.py| & Model 2. k-fold CrossVal \\ \hline 
+		\verb|main_05_binary_classification_00.py| & Model 3. k-fold CrossVal \\ \hline 
+		\verb|main_06_binary_classification_00.py| & Model 4. k-fold CrossVal \\ \hline 
+		\verb|main_07_binary_classification_00.py| & 10-fold CrossVal. Benchmarking. \\ \hline 
+		\verb|main_08_binary_classification_00.py| & Model 1 for Ensembling. \\ \hline 
+		\verb|main_09_binary_classification_00.py| & Model 2 for Ensembling. \\ \hline 
+		\verb|main_10_binary_classification_00.py| & Model 3 for Ensembling.\\ \hline 
+		\verb|main_11_binary_classification_00.py| & Model 4 for Ensembling.\\ \hline 
+		\verb|main_12_binary_classification_00.py| & Ensembling results from all models.\\ \hline 
+		\verb|main_13_binary_classification_00.py| & Ensembling results from all models. \\
+
+		\hline
+	\end{tabular}%
+\end{adjustbox}
+\end{table}
+
+\begin{table}[H]
+	\caption{Multi-classification scripts} \label{table:scripts:multi}
+	\centering
+	\begin{adjustbox}{max width=\textwidth}
+		\begin{tabular}{| l | l | }
+			\hline
+			\textbf{File name} & \textbf{Purpose} \\
+			\hline \hline
+			\verb|main_19_multiclass_classification_00.py| & Pre-processing and undersampling \\ \hline 
+			\verb|main_20_multiclass_00.py| & Model 1. for Ensembling. \\ \hline
+		\verb|main_21_multiclass_00.py| & Model 2. for Ensembling. \\ \hline
+		\verb|main_22_multiclass_00.py| & Model 3. for Ensembling. \\ \hline
+			\verb|main_23_multiclass_00.py| & Model 4. for Ensembling. \\ \hline
+			\verb|main_24_multiclass_00.py| & Model 5. for Ensembling. \\ \hline
+			\verb|main_25_multiclass_00.py| & Ensembling results for all models. \\ \hline
+			\hline
+		\end{tabular}%
+	\end{adjustbox}
+\end{table}
+
+
+\section{Result files}
+The results files are named according to the script which created them. 
+
+For instance, \verb|main_00_eda_00_files_list.xlsx| was created by \verb|main_00_eda_00.py|.
+
+They also include the model name for the ConvNet used and the names of the classes to which they pertain.
+
+\verb|main_10_binary_classification_00_Lexus_Mercedes-Benz__model_3model.h5| is a model file for ConvNet Model 3 for the Lexus v. Mercedes-Benz binary classification task, for instance.
+
+\begin{table}[ht]
+	\caption{Types of result files} \label{table:files}
+	\centering
+	\begin{tabular}{| c | c | }
+		\hline
+		\textbf{Result} & \textbf{File type} \\
+		\hline \hline
+		Figures &  \verb|*.pdf| or \verb|*.png| \\ \hline 
+		Tables &  \verb|*.tex| \\ \hline 
+		Lists &  \verb|*.xlsx|  \\ \hline 
+		Intermediate numerical results &  \verb|*.npy|  \\ \hline
+		Model files & \verb|*.h5| or \verb|*.json| \\
+		\hline
+	\end{tabular}
+\end{table}
+
+\section{Experiments}
+\subsection{Binary classification task}
+
+\begin{table}[H]
+	\caption{ConvNet models used for the binary classification task} \label{table:bin:method}
+	\centering
+	\begin{adjustbox}{max width=\textwidth}
+		\begin{tabular}{| c | c | c | c | c |}
+			\hline
+			& \textbf{Model 1} & \textbf{Model 2}  &  \textbf{Model 3} & \textbf{Model 4}\\
+			\hline \hline
+			\textbf{Feature Learning} &  \verb|32conv3x3 + ReLu - mp2x2| & \verb|32conv3x3  + ReLu - mp2x2| & \verb|32conv3x3  + ReLu - mp2x2| & \verb|32conv3x3  + ReLu - mp2x2| \\
+			& \verb|32conv3x3  + ReLu - mp2x2| & \verb|64conv3x3  + ReLu - mp2x2| & \verb|64conv3x3  + ReLu - mp2x2| & \verb|64conv3x3  + ReLu - mp2x2|\\
+			& \verb|64conv3x3  + ReLu - mp2x2| & \verb|128conv3x3  + ReLu - mp2x2| & \verb|128conv3x3  + ReLu - mp2x2| & \verb|128conv3x3  + ReLu - mp2x2|\\
+			& & \verb|256conv3x3  + ReLu - mp2x2| &  \verb|128conv3x3 + ReLu - mp2x2| & \verb|128conv3x3 + ReLu - mp2x2| \\
+			\hline
+			\textbf{Classification} & \verb|flatten| & \verb|flatten| & \verb|flatten| & \verb|flatten|\\
+			& \verb|fc64 + Relu| & \verb|fc256 + ReLu| & \verb|fc256 + ReLu| & \verb|fc256 + ReLu| \\
+			& \verb|dropout 0.5| & \verb|dropout 0.5| & \verb|dropout 0.5| & \verb|dropout 0.3|\\
+			& \verb|o1 + sigmoid| & \verb|o1 + sigmoid| & \verb|o1 + sigmoid| & \verb|o1 + sigmoid| \\
+			\hline
+			\textbf{Reference} & \verb|main_03_binary_classification_00.py| & \verb|main_04_binary_classification_00.py| & \verb|main_05_binary_classification_00.py| & \verb|main_06_binary_classification_00.py| \\ 
+			\hline
+		\end{tabular}%
+	\end{adjustbox}
+\end{table}
+
+\section{Jupyter notebooks}
+Jupyter notebooks are in progress.
+
+The first two notebooks are attached to this document.
+
+
+
+\end{document}
